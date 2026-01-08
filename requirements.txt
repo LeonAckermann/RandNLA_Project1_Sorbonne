@@ -1,0 +1,7 @@
+numpy
+scipy
+scikit-learn
+mpi4py
+matplotlib
+pandas
+mnist_datasets
