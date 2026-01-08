@@ -1,4 +1,4 @@
-# Randomized Nyström Approximation — Project Scaffold
+# Randomized Nyström Approximation 
 
 This repository contains a scaffold for experiments with randomized Nyström low-rank approximations, dataset construction from MNIST using mnist_datasets package, and a sequential + MPI implementation outline.
 
@@ -32,7 +32,7 @@ mpirun -n 4 python -m src.cli --mode mpi --n 4000 --c 1e5 --m 800 --k 50
 4. Example sweep run (vary m and k, save results and plots):
 
 ```bash
-python -m src.cli --sweep --n 1000 --c 100 --m-list 100,200,400 --k-list 50,100,200 --method gaussian --out-dir results/experiment --debug --approx-nuclear
+python -m src.cli --sweep --n 1000 --c 100 --m-list 100,200,400 --k-list 50,100,200 --method gaussian --out-dir results/experiment --debug 
 ```
 
 This builds the RBF kernel once, computes Nyström approximations for each m, evaluates relative nuclear errors for each k, and saves `results.csv`, `meta.json`, and plots (`rel_error_vs_k.png`, `nuc_vs_k.png`) in a timestamped subdirectory under `results/experiment_YYYYMMDD_HHMMSS`. Use `--debug` for detailed timing prints, `--approx-nuclear` for faster (approximate) nuclear norm computation.
