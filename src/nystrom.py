@@ -288,7 +288,7 @@ def plot_results(results: dict, out_dir: str, xlabel: str = 'k', title: str = No
         plt.plot(ks, rels, marker='o', label=f'm={m}')
     plt.xlabel(xlabel)
     plt.ylabel('Relative nuclear norm error')
-    plt.xscale('log')
+    # plt.xscale('log')
     plt.yscale('log')
     plt.legend()
     if title:
@@ -310,7 +310,7 @@ def plot_results(results: dict, out_dir: str, xlabel: str = 'k', title: str = No
             plt.plot(ks, nucs_nyst, marker='x', linestyle='--', label=f'A_nyst_k nuc (m={m})')
     plt.xlabel(xlabel)
     plt.ylabel('Nuclear norm')
-    plt.xscale('log')
+    # plt.xscale('log')
     plt.yscale('log')
     plt.legend()
     if title:
