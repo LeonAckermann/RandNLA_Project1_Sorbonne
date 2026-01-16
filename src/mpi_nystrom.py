@@ -1,106 +1,83 @@
-"""MPI scaffold for distributed Nyström-style computation.
-
-This module provides a simple MPI implementation that:
-- broadcasts a randomly generated Omega from root,
-- each rank computes its local rows of A (kernel rows for owned row indices),
-- computes local Y_local = A_local @ Omega,
-- gathers Y at root to proceed with the small-size computations.
-
-This is a pragmatic scaffold intended to match the block-row distribution described
-in the project brief. It intentionally keeps logic readable rather than fully
-optimized for large-scale runs.
-"""
-from mpi4py import MPI
 import numpy as np
 import time
-from typing import Tuple
-from .dataset import load_mnist, rbf_kernel
+import sys
+from scipy.linalg import cholesky, svd, solve_triangular, qr
+from mpi4py import MPI
+from .sketch import generate_sketch_block 
 
-
-def _row_range_for_rank(n: int, rank: int, size: int) -> Tuple[int, int]:
-    # simple block row partition
-    rows_per = n // size
-    rem = n % size
-    start = rank * rows_per + min(rank, rem)
-    end = start + rows_per + (1 if rank < rem else 0)
-    return start, end
-
-
-def mpi_nystrom(n: int, c: float, m: int, k: int, seed: int = None, train: bool = True):
-    comm = MPI.COMM_WORLD
+def nystrom_mpi(comm, A_local, global_n, k, l, seed=42, sketch='gaussian', debug=False):
     rank = comm.Get_rank()
     size = comm.Get_size()
+    q = int(np.sqrt(size))
+    
+    # 1. Detect actual local dimensions
+    # Instead of global_n // q, use what we actually have in memory
+    local_rows, local_cols = A_local.shape
+    
+    grid_row = rank // q
+    grid_col = rank % q
+    
+    row_comm = comm.Split(color=grid_row, key=grid_col)
+    col_comm = comm.Split(color=grid_col, key=grid_row)
 
+    # 2. Synchronize row/col offsets
+    # Every rank needs to know where its block starts in the global matrix
+    # We use scan to find the offset based on actual block sizes
+    row_offset = col_comm.scan(local_rows) - local_rows
+    col_offset = row_comm.scan(local_cols) - local_cols
+
+    # 3. Generate Local Sketch Blocks
+    # Now Omega_col matches exactly the number of columns in A_local
+    Omega_col = generate_sketch_block(local_cols, l, seed, col_offset, sketch)
+    Omega_row = generate_sketch_block(local_rows, l, seed, row_offset, sketch)
+
+    comm.Barrier()
+    
+    # 4. Compute C (Distributed)
+    # C_partial is (local_rows x l)
+    C_partial = A_local @ Omega_col
+    
+    # Sum across the row communicator
+    C_row_block = None
+    if grid_col == 0:
+        C_row_block = np.zeros((local_rows, l), dtype=A_local.dtype)
+    
+    row_comm.Reduce(C_partial, C_row_block, op=MPI.SUM, root=0)
+
+    # 5. Compute B (Replicated)
+    B_partial = Omega_row.T @ C_partial
+    B_global = comm.allreduce(B_partial, op=MPI.SUM)
+    B_global += np.eye(l) * 1e-12
+
+    # 6. Gather C to Root
+    U_hat, Lambda_k, total_time = None, None, 0.0
+    
+    # To use Gatherv (which handles different block sizes), 
+    # Rank 0 needs to know how many rows each processor in the column has.
+    row_counts = col_comm.allgather(local_rows) if grid_col == 0 else None
+
+    C_global = None
     if rank == 0:
-        X = load_mnist(n=n, train=train)
-    else:
-        X = None
+        C_global = np.zeros((global_n, l), dtype=A_local.dtype)
+        t_start = time.time()
 
-    # Broadcast full X to all ranks for simplicity (could be made distributed)
-    X = comm.bcast(X, root=0)
-    n_actual = X.shape[0]
-    if n_actual != n:
-        n = n_actual
+    if grid_col == 0:
+        # We use the lowercase gather for simplicity with mismatched shapes
+        # This collects the list of (local_rows x l) blocks
+        all_C_blocks = col_comm.gather(C_row_block, root=0)
+        if rank == 0:
+            C_global = np.vstack(all_C_blocks)
 
-    # Each rank computes its local rows of the kernel: A_local = K[local_rows, :]
-    start, end = _row_range_for_rank(n, rank, size)
-    X_local = X[start:end, :]
-    # compute distances between X_local and X
-    sq_norms_local = np.sum(X_local * X_local, axis=1)
-    sq_norms = np.sum(X * X, axis=1)
-    D2_local = sq_norms_local[:, None] + sq_norms[None, :] - 2.0 * (X_local @ X.T)
-    D2_local = np.maximum(D2_local, 0.0)
-    A_local = np.exp(-D2_local / (c * c))
-
-    # Root creates Omega (n x m) and broadcasts
+    # 7. Final Factorization (Rank 0 only)
     if rank == 0:
-        rng = np.random.default_rng(seed)
-        Omega = rng.normal(size=(n, m))
-    else:
-        Omega = None
-    Omega = comm.bcast(Omega, root=0)
+        # ... (Same SVD/QR logic as before) ...
+        L = cholesky(B_global, lower=True)
+        Z = solve_triangular(L, C_global.T, lower=True).T
+        Q, R_upper = qr(Z, mode='economic')
+        Ur, Sigmar, _ = svd(R_upper)
+        Lambda_k = Sigmar[:k]**2
+        U_hat = Q @ Ur[:, :k]
+        total_time = time.time() - t_start
 
-    t0 = time.time()
-    # Local multiply
-    Y_local = A_local @ Omega
-
-    # Gather Y_local shapes and data to root
-    counts = np.array(comm.gather(Y_local.shape[0], root=0))
-    if rank == 0:
-        # allocate full Y
-        Y = np.empty((n, m), dtype=Y_local.dtype)
-        # copy root's block
-        Y[start:end, :] = Y_local
-        # receive others
-        offset = 0
-        for r in range(1, size):
-            s, e = _row_range_for_rank(n, r, size)
-            recv_rows = e - s
-            if recv_rows > 0:
-                buf = np.empty((recv_rows, m), dtype=Y_local.dtype)
-                comm.Recv(buf, source=r, tag=77)
-                Y[s:e, :] = buf
-    else:
-        comm.Send(Y_local, dest=0, tag=77)
-
-    t1 = time.time()
-
-    if rank == 0:
-        # root continues sequentially: orthonormalize Y, form B = Q^T A Q, etc.
-        Q, _ = np.linalg.qr(Y, mode='reduced')
-        # build full A on root (may be memory heavy) and compute B = Q^T A Q
-        A_full = rbf_kernel(X, c)
-        B = Q.T @ (A_full @ Q)
-        Ub, sb, _ = np.linalg.svd(B)
-        r = min(k, len(sb))
-        Ub_k = Ub[:, :r]
-        sb_k = sb[:r]
-        A_approx = Q @ (Ub_k @ np.diag(sb_k) @ Ub_k.T) @ Q.T
-        return A_approx, float(t1 - t0)
-    else:
-        return None, float(t1 - t0)
-
-
-if __name__ == '__main__':
-    # small local test (not intended to be run under mpirun here)
-    raise RuntimeError("This module is meant to be invoked via src.cli under mpirun")
+    comm.Barrier()
+    return U_hat, Lambda_k, total_time
