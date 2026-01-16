@@ -5,3 +5,4 @@ mpi4py
 matplotlib
 pandas
 mnist_datasets
+requests
