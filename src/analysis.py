@@ -36,12 +36,10 @@ def plot_results(results: dict, out_dir: str, xlabel: str = 'k', title: str = No
     from collections import defaultdict
 
     os.makedirs(out_dir, exist_ok=True)
-    # organize by m
     by_m = defaultdict(list)
     for (m, k), vals in sorted(results.items()):
         by_m[m].append((k, vals))
 
-    # Relative error vs k
     plt.figure()
     for m, items in sorted(by_m.items()):
         items_sorted = sorted(items, key=lambda x: x[0])
@@ -50,7 +48,6 @@ def plot_results(results: dict, out_dir: str, xlabel: str = 'k', title: str = No
         plt.plot(ks, rels, marker='o', label=f'm={m}')
     plt.xlabel(xlabel)
     plt.ylabel('Relative nuclear norm error')
-    # plt.xscale('log')
     plt.yscale('log')
     plt.legend()
     if title:

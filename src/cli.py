@@ -16,7 +16,7 @@ def run_sweep_sequential(n: int, c: float, l_list: list, k_list: list, sketch: s
     if debug:
         t_sweep_start = time.time()
     
-    # Load data and build kernel once
+    # Load data and build kernel
     if dataset == 'mnist':
         print(f"Loading MNIST {'train' if train else 'test'} set (n={n})")
     else:
@@ -85,7 +85,7 @@ def run_sweep_sequential(n: int, c: float, l_list: list, k_list: list, sketch: s
         if debug:
             t_m_end = time.time()
             print(f"[DEBUG] Total for l={l}: {t_m_end - t_m_start:.4f}s")
-        print()  # Blank line between m values
+        print()
     
     if debug:
         t_sweep_end = time.time()
@@ -107,7 +107,7 @@ def run_sweep_mpi(n: int, c: float, l_list: list, k_list: list, sketch: str, dat
         if rank == 0: print(f"Error: Size {size} must be a perfect square.")
         comm.Abort(1)
     
-    # 1. Load and Build on Rank 0
+    # Load and Build on Rank 0
     if rank == 0:
         if dataset == 'mnist':
             X = load_mnist(n=n, train=train)
@@ -122,8 +122,7 @@ def run_sweep_mpi(n: int, c: float, l_list: list, k_list: list, sketch: str, dat
     
     nuc_A = comm.bcast(nuc_A, root=0)
 
-    # 2. Distribute Matrix A (Robust against non-divisible n)
-    # We use lowercase send/recv to allow MPI to handle different block shapes automatically
+    # Matrix A distribution
     if rank == 0:
         block_size = n // q
         for r in range(size):
@@ -141,17 +140,16 @@ def run_sweep_mpi(n: int, c: float, l_list: list, k_list: list, sketch: str, dat
                 # Use lowercase send (pickling) to handle shape variations
                 comm.send(block, dest=r, tag=10)
     else:
-        # Use lowercase recv (no pre-allocation needed)
+        # Use lowercase recv
         A_local = comm.recv(source=0, tag=10)
 
-    # 3. Synchronized Sweep
+    # Synchronized Sweep
     results = {}
     for l in l_list:
         if rank == 0:
             print(f"\n--- Running l={l} ---", flush=True)
         
         max_k = max(k_list)
-        # Your MPI Nystrom function
         U_approx, S_approx, t_compute = nystrom_mpi(
             comm=comm, 
             A_local=A_local, 
@@ -185,7 +183,7 @@ def run_sweep_mpi(n: int, c: float, l_list: list, k_list: list, sketch: str, dat
 
 def main():
     parser = argparse.ArgumentParser(description='Randomized Nyström sweep experiments')
-    parser.add_argument('--dataset', choices=['mnist', 'msd'], default='mnist', help='dataset to use (default: mnist)')
+    parser.add_argument('--dataset', choices=['mnist', 'msd'], default='mnist', help='dataset to use (mnist, msd), default: mnist')
     parser.add_argument('--dataset-path', type=str, default='./datasets/YearPredictionMSD.txt', help='path to MSD dataset file')
     parser.add_argument('--n', type=int, required=True, help='number of data rows to use')
     parser.add_argument('--c', type=float, required=True, help='RBF bandwidth parameter')
@@ -208,13 +206,13 @@ def main():
 
     print(f"Sweep over l={l_list} and k={k_list}")
 
-    # Run sweep
+    # Sequantial / Parallel
     if args.mpi:
         results = run_sweep_mpi(args.n, args.c, l_list, k_list, args.sketch, args.dataset, args.dataset_path, args.seed, args.train, args.debug)
     else:
         results = run_sweep_sequential(args.n, args.c, l_list, k_list, args.sketch, args.dataset, args.dataset_path, args.seed, args.train, args.debug)
 
-    # Save results (only on rank 0 for MPI, or always for sequential)
+    # Save results, only on rank 0 for MPI
     if results is not None:
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         out_dir = f"{args.out_dir}/{timestamp}"

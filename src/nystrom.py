@@ -33,7 +33,7 @@ def nystrom_rank_k_truncated(A: np.ndarray, k: int, l: int = 10, seed: int = Non
     n = A.shape[0]
     rng = np.random.default_rng(seed)
     
-    # 1. Generate test matrix Omega based on sketch type
+    # Generate test matrix Omega based on sketch type
     if sketch == 'gaussian':
         Omega = generate_gaussian_sketch(n, l, rng)
     else:  # 'srht'
@@ -43,7 +43,8 @@ def nystrom_rank_k_truncated(A: np.ndarray, k: int, l: int = 10, seed: int = Non
         print(f"[DEBUG] Sketch matrix Omega generated: shape {Omega.shape}")
     
     t_compute_start = time.time()
-    # 2. Compute Sketch Matrices C and B
+
+    # Compute Sketch Matrices C and B
     # C = A * Omega
     C = A @ Omega
     # B = Omega.T * A * Omega = Omega.T * C
@@ -55,9 +56,8 @@ def nystrom_rank_k_truncated(A: np.ndarray, k: int, l: int = 10, seed: int = Non
     if debug:
         print(f"[DEBUG] Sketches computed. Shape C: {C.shape}, Shape B: {B.shape}")
 
-    # 3. Step 1: Cholesky Decomposition of B -> B = LL^T
-    # Slide Remark: If B is rank deficient, use SVD/Eig instead. 
-    # We use a try-except block to handle this robustness.
+    # Step 1: Cholesky Decomposition of B -> B = LL^T
+    # If B is rank deficient, use SVD/Eig instead.
     try:
         L = cholesky(B, lower=True)
     except np.linalg.LinAlgError:
@@ -65,15 +65,14 @@ def nystrom_rank_k_truncated(A: np.ndarray, k: int, l: int = 10, seed: int = Non
         Ub, Sb, _ = svd(B)
         L = Ub @ np.diag(np.sqrt(Sb))
 
-    # 4. Step 2: Whitening -> Z = C * L^{-T}
+    # Step 2: Z = C * L^{-T}
     # We solve L * Z.T = C.T for Z.T, then transpose back
     Z = solve_triangular(L, C.T, lower=True).T
     
-    # 5. Step 3: QR Factorization of Z -> Z = QR
+    # Step 3: QR Factorization of Z -> Z = QR
     Q, R_upper = qr(Z, mode='economic')
     
-    # 6. Step 4: Truncated SVD of R -> R = Uk * Sigma_k * Vk.T
-    # Note: R is small (l x l), so this SVD is fast.
+    # Step 4: Truncated SVD of R -> R = Uk * Sigma_k * Vk.T
     
     Ur, Sigmar, Vrt = svd(R_upper)
     
@@ -81,7 +80,7 @@ def nystrom_rank_k_truncated(A: np.ndarray, k: int, l: int = 10, seed: int = Non
     Ur_k = Ur[:, :k]
     Sigmar_k = Sigmar[:k]
     
-    # 7. Final Factorization Construction
+    # Final Factorization Construction
     # Eigenvalues are Sigma_k^2
     Lambda_k = Sigmar_k**2
     
