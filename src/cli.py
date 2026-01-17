@@ -11,7 +11,7 @@ from .error import relative_nuclear_error
 from .mpi_nystrom import nystrom_mpi
 
 
-def run_sweep_sequential(n: int, c: float, m_list: list, k_list: list, sketch: str, dataset: str, dataset_path: str, seed: int, train: bool = True, debug: bool = False):
+def run_sweep_sequential(n: int, c: float, l_list: list, k_list: list, sketch: str, dataset: str, dataset_path: str, seed: int, train: bool = True, debug: bool = False):
     """Run sweep experiments sequentially."""
     if debug:
         t_sweep_start = time.time()
@@ -43,13 +43,13 @@ def run_sweep_sequential(n: int, c: float, m_list: list, k_list: list, sketch: s
     print(f"Nuclear norm of A: {nuc_A:.6e}\n")
     
     results = {}
-    for m in m_list:
-        print(f"--- Running m={m} ---")
+    for l in l_list:
+        print(f"--- Running l={l} ---")
         if debug:
             t_m_start = time.time()
         
         # Compute Nyström approximation with truncation at max k
-        U_approx, S_approx, t_compute = nystrom_rank_k_truncated(A, l=m, k=max(k_list), seed=seed, sketch=sketch, debug=debug)
+        U_approx, S_approx, t_compute = nystrom_rank_k_truncated(A, l=l, k=max(k_list), seed=seed, sketch=sketch, debug=debug)
         
         for k in k_list:
             # Slice factors for current k
@@ -65,17 +65,17 @@ def run_sweep_sequential(n: int, c: float, m_list: list, k_list: list, sketch: s
             # Compute error
             err = relative_nuclear_error(A, A_approx_k, nuc_A=nuc_A, debug=debug)
 
-            results[(m, k)] = {
+            results[(l, k)] = {
                 'n': n,
                 'c': c,
-                'm': m,
+                'l': l,
                 'k': k,
                 'dataset': dataset,
                 'sketch_method': sketch,
                 'compute_time': float(t_compute),
                 'rel_error': float(err),
             }
-            print(f"m={m}, k={k}: Time={t_compute:.4f}s Error={err:.6e}")
+            print(f"l={l}, k={k}: Time={t_compute:.4f}s Error={err:.6e}")
             
             if debug:
                 t_k_end = time.time()
@@ -83,7 +83,7 @@ def run_sweep_sequential(n: int, c: float, m_list: list, k_list: list, sketch: s
         
         if debug:
             t_m_end = time.time()
-            print(f"[DEBUG] Total for m={m}: {t_m_end - t_m_start:.4f}s")
+            print(f"[DEBUG] Total for l={l}: {t_m_end - t_m_start:.4f}s")
         print()  # Blank line between m values
     
     if debug:
@@ -93,7 +93,7 @@ def run_sweep_sequential(n: int, c: float, m_list: list, k_list: list, sketch: s
     return results
 
 
-def run_sweep_mpi(n: int, c: float, m_list: list, k_list: list, sketch: str, dataset: str, dataset_path: str, seed: int, train: bool = True, debug: bool = False):
+def run_sweep_mpi(n: int, c: float, l_list: list, k_list: list, sketch: str, dataset: str, dataset_path: str, seed: int, train: bool = True, debug: bool = False):
     from mpi4py import MPI
     from .mpi_nystrom import nystrom_mpi
     
@@ -145,9 +145,9 @@ def run_sweep_mpi(n: int, c: float, m_list: list, k_list: list, sketch: str, dat
 
     # 3. Synchronized Sweep
     results = {}
-    for m in m_list:
+    for l in l_list:
         if rank == 0:
-            print(f"\n--- Running m={m} ---", flush=True)
+            print(f"\n--- Running l={l} ---", flush=True)
         
         max_k = max(k_list)
         # Your MPI Nystrom function
@@ -156,7 +156,7 @@ def run_sweep_mpi(n: int, c: float, m_list: list, k_list: list, sketch: str, dat
             A_local=A_local, 
             global_n=n, 
             k=max_k, 
-            l=m, 
+            l=l, 
             seed=seed, 
             sketch=sketch, 
             debug=debug
@@ -169,12 +169,12 @@ def run_sweep_mpi(n: int, c: float, m_list: list, k_list: list, sketch: str, dat
                 A_approx_k = U_k @ (S_k[:, None] * U_k.T)
                 err = relative_nuclear_error(A_full, A_approx_k, nuc_A=nuc_A)
                 
-                results[(m, k)] = {
-                    'n': n, 'c': c, 'm': m, 'k': k,
+                results[(l, k)] = {
+                    'n': n, 'c': c, 'l': l, 'k': k,
                     'dataset': dataset, 'sketch_method': sketch,
                     'compute_time': t_compute, 'rel_error': err
                 }
-                print(f"m={m}, k={k}: Time={t_compute:.4f}s Error={err:.6e}", flush=True)
+                print(f"l={l}, k={k}: Time={t_compute:.4f}s Error={err:.6e}", flush=True)
 
         comm.Barrier()
 
