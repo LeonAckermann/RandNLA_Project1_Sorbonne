@@ -74,6 +74,7 @@ def run_sweep_sequential(n: int, c: float, l_list: list, k_list: list, sketch: s
                 'sketch_method': sketch,
                 'compute_time': float(t_compute),
                 'rel_error': float(err),
+                'memory_gb': float(A.nbytes / (1024**3))
             }
             print(f"l={l}, k={k}: Time={t_compute:.4f}s Error={err:.6e}")
             
@@ -172,7 +173,8 @@ def run_sweep_mpi(n: int, c: float, l_list: list, k_list: list, sketch: str, dat
                 results[(l, k)] = {
                     'n': n, 'c': c, 'l': l, 'k': k,
                     'dataset': dataset, 'sketch_method': sketch,
-                    'compute_time': t_compute, 'rel_error': err
+                    'compute_time': t_compute, 'rel_error': err,
+                    'memory_gb': float(A_full.nbytes / (1024**3)) if A_full is not None else 0.0
                 }
                 print(f"l={l}, k={k}: Time={t_compute:.4f}s Error={err:.6e}", flush=True)
 
