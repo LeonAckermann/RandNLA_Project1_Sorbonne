@@ -51,10 +51,10 @@ def generate_srht_sketch(n: int, l: int, rng: np.random.Generator) -> np.ndarray
     # Ensure n is a power of 2 for Hadamard
     n_padded = 2 ** int(np.ceil(np.log2(n)))
     
-    # 1. Random signs (diagonal matrix D)
+    # D: Diagonal random signs
     signs = rng.choice([-1, 1], size=n_padded)
     
-    # 2. Hadamard transform via fast Walsh-Hadamard transform
+    # H: Hadamard transform via fast Walsh-Hadamard transform
     def hadamard_transform(x: np.ndarray) -> np.ndarray:
         """Fast Walsh-Hadamard transform (recursive)."""
         def _fwht(x):
@@ -64,6 +64,8 @@ def generate_srht_sketch(n: int, l: int, rng: np.random.Generator) -> np.ndarray
             x_even = _fwht(x[0::2])
             x_odd = _fwht(x[1::2])
             return np.concatenate([x_even + x_odd, x_even - x_odd])
+        
+        N= len(x)
         return _fwht(x) / np.sqrt(N)
     
     # Apply D*H: first sign multiplication, then Hadamard on each row
@@ -73,7 +75,7 @@ def generate_srht_sketch(n: int, l: int, rng: np.random.Generator) -> np.ndarray
         row[i] = signs[i]
         DH[i, :] = hadamard_transform(row)
     
-    # 3. Random column subsampling (keep l columns out of n_padded)
+    # P: Random column subsampling (keep l columns out of n_padded)
     col_indices = rng.choice(n_padded, size=l, replace=False)
     Omega = DH[:n, :][:, col_indices]
     
