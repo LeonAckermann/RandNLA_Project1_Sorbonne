@@ -9,9 +9,7 @@ def generate_sketch_block(n_rows: int, l: int, seed: int, row_offset: int, sketc
     Seeding is offset by the global row index to ensure mathematical consistency 
     across distributed blocks without communication.
     """
-    # Create a distinct RNG stream for this block based on its global position
-    # (seed + row_offset) ensures that row 0 generated on Proc 0 is identical 
-    # to row 0 if it were generated on Proc 1.
+    # Create a distinct RNG stream for this block based on its global position (seed + row_offset)
     rng = np.random.default_rng(seed + row_offset)
     if sketch == 'gaussian':
         return generate_gaussian_sketch(n_rows, l, rng)

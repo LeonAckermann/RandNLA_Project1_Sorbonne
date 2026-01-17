@@ -183,7 +183,7 @@ def run_sweep_mpi(n: int, c: float, l_list: list, k_list: list, sketch: str, dat
 
 def main():
     parser = argparse.ArgumentParser(description='Randomized Nyström sweep experiments')
-    parser.add_argument('--dataset', choices=['mnist', 'msd'], default='mnist', help='dataset to use (mnist, msd), default: mnist')
+    parser.add_argument('--dataset', choices=['mnist', 'msd'], default='msd', help='dataset to use (mnist, msd), default: msd')
     parser.add_argument('--dataset-path', type=str, default='./datasets/YearPredictionMSD.txt', help='path to MSD dataset file')
     parser.add_argument('--n', type=int, required=True, help='number of data rows to use')
     parser.add_argument('--c', type=float, required=True, help='RBF bandwidth parameter')
