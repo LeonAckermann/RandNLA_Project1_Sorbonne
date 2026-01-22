@@ -1,0 +1,27 @@
+{
+  "dataset": "msd",
+  "train": false,
+  "n": 5000,
+  "c": 100000.0,
+  "l": [
+    2000
+  ],
+  "k": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    1000
+  ],
+  "sketch": "gaussian",
+  "mpi": false,
+  "seed": 0,
+  "#proc": "1",
+  "summary_csv": null,
+  "skip_error": false
+}

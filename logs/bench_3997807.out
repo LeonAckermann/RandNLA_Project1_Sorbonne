@@ -1,0 +1,31 @@
+=== JOB CONTEXT ===
+Host: mel0050
+SLURM_JOB_ID: 3997807
+module cmd: module
+MODULEPATH: /apps/USE/system/modules
+===================
+=== PYTHON FROM MODULES ===
+/apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/bin/python
+Python 3.12.3
+sys.executable: /apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/bin/python
+===========================
+=== PYTHON AFTER VENV ===
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+Python 3.12.3
+sys.executable: /mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+=========================
+=== STARTING BENCHMARK ===
+Python: /mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+LD_LIBRARY_PATH: /apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/OpenMPI/5.0.3-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/UCC/1.3.0-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/PRRTE/3.0.5-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/PMIx/5.0.2-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libfabric/1.21.0-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/UCX/1.16.0-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libevent/2.1.12-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/hwloc/2.10.0-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libpciaccess/0.18.1-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libxml2/2.12.7-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/numactl/2.0.18-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/SciPy-bundle/2024.05-gfbf-2024a/lib/python3.12/site-packages/numpy/core/lib:/apps/USE/easybuild/release/2024.1/software/Boost/1.85.0-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/ICU/75.1-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/zstd/1.5.6-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/lz4/1.9.4-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/FFTW/3.3.10-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/FlexiBLAS/3.4.4-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/OpenBLAS/0.3.27-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/OpenSSL/3/lib:/apps/USE/easybuild/release/2024.1/software/libffi/3.4.5-GCCcore-13.3.0/lib64:/apps/USE/easybuild/release/2024.1/software/XZ/5.4.5-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/SQLite/3.45.3-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/Tcl/8.6.14-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libreadline/8.2-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/ncurses/6.5-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/bzip2/1.0.8-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/binutils/2.42-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/zlib/1.3.1-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/GCCcore/13.3.0/lib64
+[1/4] MSD Stability (c=10^4)...
+Sweep over l=[500, 1000, 2000] and k=[200, 400, 600, 800, 1000]
+Dataset not found at './datasets/YearPredictionMSD.txt'. Downloading from UCI...
+Download and extraction complete.
+
+--- Running l=500 ---
+l=500, k=200: Time=2.3916s Error=4.722732e-03
+l=500, k=400: Time=2.3916s Error=3.270855e-03
+error: *** job 3997807 CANCELLED DUE TO TIME LIMIT ***
+error: *** step 3997807.0 CANCELLED DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: mel0050: tasks 0-15: Terminated

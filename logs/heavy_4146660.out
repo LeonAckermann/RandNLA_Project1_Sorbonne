@@ -1,0 +1,25 @@
+=== JOB INFO ===
+Host: mel0442
+JobID: 4146660
+Requested ntasks: 64
+===============
+=== MODULE PYTHON ===
+/apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/bin/python
+Python 3.12.3
+/apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/bin/python
+=====================
+=== VENV PYTHON ===
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+Python 3.12.3
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+===================
+Summary CSV: results/scaling_N40k_4146660/scaling_summary.csv
+=== HEAVY SCALING (N=40000) ===
+Output: results/scaling_N40k_4146660
+===============================
+------------------------------------------------
+Running with 1 MPI tasks (grid 1x1)
+Output dir: results/scaling_N40k_4146660/p1
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: mel0442: task 0: Terminated
+srun: Terminating StepId=4146660.0

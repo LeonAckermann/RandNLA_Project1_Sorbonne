@@ -1,0 +1,118 @@
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "Python/3.12.3-GCCcore-13.3.0"
+   Try: "module spider Python/3.12.3-GCCcore-13.3.0" to see how to load the
+module(s).
+
+
+
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "SciPy-bundle/2024.05-gfbf-2024a"
+   Try: "module spider SciPy-bundle/2024.05-gfbf-2024a" to see how to load the
+module(s).
+
+
+
+Lmod has detected the following error: These module(s) or extension(s) exist
+but cannot be loaded as requested: "OpenMPI/5.0.3-GCC-13.3.0"
+   Try: "module spider OpenMPI/5.0.3-GCC-13.3.0" to see how to load the
+module(s).
+
+
+
+=== STARTING BENCHMARK ON mel0340 ===
+Python path: /mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+LD_LIBRARY_PATH: /lib:
+[1/4] MSD Stability (c=10^4)...
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+srun: error: mel0340: tasks 0-15: Exited with exit code 127
+[2/4] MSD Stability (c=10^5)...
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+srun: error: mel0340: tasks 0-15: Exited with exit code 127
+[3/4] MNIST Stability (c=10^5)...
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+srun: error: mel0340: tasks 0-15: Exited with exit code 127
+[4/4] Scalability Tests (N=40000)...
+   -> Running on 1 cores...
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+srun: error: mel0340: task 0: Exited with exit code 127
+   -> Running on 4 cores...
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+srun: error: mel0340: tasks 0-3: Exited with exit code 127
+   -> Running on 9 cores...
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+srun: error: mel0340: tasks 0-8: Exited with exit code 127
+   -> Running on 16 cores...
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python: error while loading shared libraries: libpython3.12.so.1.0: cannot open shared object file: No such file or directory
+srun: error: mel0340: tasks 0-15: Exited with exit code 127
+=== BENCHMARK COMPLETE ===

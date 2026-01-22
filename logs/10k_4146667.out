@@ -1,0 +1,199 @@
+=== JOB INFO ===
+Host: mel0039
+JobID: 4146667
+Requested ntasks: 64
+===============
+=== MODULE PYTHON ===
+/apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/bin/python
+Python 3.12.3
+/apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/bin/python
+=====================
+=== VENV PYTHON ===
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+Python 3.12.3
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+===================
+Summary CSV: results/scaling_N10k_4146667/scaling_summary.csv
+=== HEAVY SCALING (N=10000) ===
+Output: results/scaling_N10k_4146667
+===============================
+------------------------------------------------
+Running with 1 MPI tasks (grid 1x1)
+Output dir: results/scaling_N10k_4146667/p1
+Sweep over l=[2000] and k=[500]
+
+--- Running l=2000 ---
+l=2000, k=500: Total=21.9236s (ParKernel=10.3755s) Error=nan
+Saved results and plots to results/scaling_N10k_4146667/p1/20260122_005524
+Done: P=1
+------------------------------------------------
+Running with 4 MPI tasks (grid 2x2)
+Output dir: results/scaling_N10k_4146667/p4
+Sweep over l=[2000] and k=[500]
+
+--- Running l=2000 ---
+l=2000, k=500: Total=19.7143s (ParKernel=5.8322s) Error=nan
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Saved results and plots to results/scaling_N10k_4146667/p4/20260122_005604
+Done: P=4
+------------------------------------------------
+Running with 9 MPI tasks (grid 3x3)
+Output dir: results/scaling_N10k_4146667/p9
+Sweep over l=[2000] and k=[500]
+
+--- Running l=2000 ---
+l=2000, k=500: Total=17.2342s (ParKernel=3.0441s) Error=nan
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Saved results and plots to results/scaling_N10k_4146667/p9/20260122_005641
+Done: P=9
+------------------------------------------------
+Running with 16 MPI tasks (grid 4x4)
+Output dir: results/scaling_N10k_4146667/p16
+Sweep over l=[2000] and k=[500]
+
+--- Running l=2000 ---
+l=2000, k=500: Total=16.0358s (ParKernel=2.0009s) Error=nan
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Saved results and plots to results/scaling_N10k_4146667/p16/20260122_005721
+Done: P=16
+------------------------------------------------
+Running with 36 MPI tasks (grid 6x6)
+Output dir: results/scaling_N10k_4146667/p36
+Sweep over l=[2000] and k=[500]
+
+--- Running l=2000 ---
+l=2000, k=500: Total=15.1803s (ParKernel=1.2860s) Error=nan
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Saved results and plots to results/scaling_N10k_4146667/p36/20260122_005801
+Done: P=36
+------------------------------------------------
+Running with 64 MPI tasks (grid 8x8)
+Output dir: results/scaling_N10k_4146667/p64
+Sweep over l=[2000] and k=[500]
+
+--- Running l=2000 ---
+l=2000, k=500: Total=15.2020s (ParKernel=1.0257s) Error=nan
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Sweep over l=[2000] and k=[500]
+Saved results and plots to results/scaling_N10k_4146667/p64/20260122_005844
+Done: P=64
+=== DONE ===
+CSV written to: results/scaling_N10k_4146667/scaling_summary.csv

@@ -1,0 +1,18 @@
+Sweep over l=[2000] and k=[100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+Loading MSD set (n=10000)
+Building RBF kernel matrix A
+Nuclear norm of A: 1.000000e+04
+
+--- Running l=2000 ---
+l=2000, k=100: Time=21.6589s Error=1.391272e-06
+l=2000, k=200: Time=21.6589s Error=2.714249e-07
+l=2000, k=300: Time=21.6589s Error=1.201252e-07
+l=2000, k=400: Time=21.6589s Error=6.658674e-08
+l=2000, k=500: Time=21.6589s Error=4.116247e-08
+l=2000, k=600: Time=21.6589s Error=2.737318e-08
+l=2000, k=700: Time=21.6589s Error=1.915803e-08
+l=2000, k=800: Time=21.6589s Error=1.395355e-08
+l=2000, k=900: Time=21.6589s Error=1.051711e-08
+l=2000, k=1000: Time=21.6589s Error=8.191285e-09
+
+Saved results and plots to results/sequential_4146754/20260122_015802

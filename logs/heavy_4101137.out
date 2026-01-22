@@ -1,0 +1,49 @@
+=== JOB INFO ===
+Host: mel0048
+JobID: 4101137
+Requested ntasks: 64
+===============
+=== MODULE PYTHON ===
+/apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/bin/python
+Python 3.12.3
+/apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/bin/python
+=====================
+=== VENV PYTHON ===
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+Python 3.12.3
+/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/venv/bin/python
+===================
+=== HEAVY SCALING (N=40000) ===
+Output: results/scaling_N40k_4101137
+LD_LIBRARY_PATH: /apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/OpenMPI/5.0.3-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/UCC/1.3.0-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/PRRTE/3.0.5-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/PMIx/5.0.2-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libfabric/1.21.0-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/UCX/1.16.0-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libevent/2.1.12-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/hwloc/2.10.0-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libpciaccess/0.18.1-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libxml2/2.12.7-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/numactl/2.0.18-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/SciPy-bundle/2024.05-gfbf-2024a/lib/python3.12/site-packages/numpy/core/lib:/apps/USE/easybuild/release/2024.1/software/Boost/1.85.0-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/ICU/75.1-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/zstd/1.5.6-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/lz4/1.9.4-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/FFTW/3.3.10-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/FlexiBLAS/3.4.4-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/OpenBLAS/0.3.27-GCC-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/Python/3.12.3-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/OpenSSL/3/lib:/apps/USE/easybuild/release/2024.1/software/libffi/3.4.5-GCCcore-13.3.0/lib64:/apps/USE/easybuild/release/2024.1/software/XZ/5.4.5-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/SQLite/3.45.3-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/Tcl/8.6.14-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/libreadline/8.2-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/ncurses/6.5-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/bzip2/1.0.8-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/binutils/2.42-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/zlib/1.3.1-GCCcore-13.3.0/lib:/apps/USE/easybuild/release/2024.1/software/GCCcore/13.3.0/lib64
+===============================
+------------------------------------------------
+Running with 1 MPI tasks (grid 1x1)
+Output dir: results/scaling_N40k_4101137/p1
+Sweep over l=[2000] and k=[500]
+
+--- Running l=2000 ---
+l=2000, k=500: Time=34.3569s Error=7.484271e-08
+Saved results and plots to results/scaling_N40k_4101137/p1/20260119_032325
+Done: P=1
+------------------------------------------------
+Running with 4 MPI tasks (grid 2x2)
+Output dir: results/scaling_N40k_4101137/p4
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/src/cli.py", line 237, in <module>
+    main()
+  File "/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/src/cli.py", line 211, in main
+    results = run_sweep_mpi(args.n, args.c, l_list, k_list, args.sketch, args.dataset, args.dataset_path, args.seed, args.train, args.debug)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/tier2/users/u102575/RandNLA_Project1_Sorbonne/src/cli.py", line 141, in run_sweep_mpi
+    comm.send(block, dest=r, tag=10)
+  File "src/mpi4py/MPI.src/Comm.pyx", line 1962, in mpi4py.MPI.Comm.send
+  File "src/mpi4py/MPI.src/msgpickle.pxi", line 243, in mpi4py.MPI.PyMPI_send
+mpi4py.MPI.Exception: MPI_ERR_ARG: invalid argument of some other kind
+Sweep over l=[2000] and k=[500]
+error: *** job 4101137 CANCELLED DUE TO TIME LIMIT ***
+error: *** step 4101137.1 CANCELLED DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: error: mel0048: tasks 0-3: Terminated
