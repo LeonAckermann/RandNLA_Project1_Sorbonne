@@ -1,0 +1,31 @@
+{
+  "dataset": "mnist",
+  "train": false,
+  "n": 10000,
+  "c": 100.0,
+  "l": [
+    600,
+    1000,
+    2000,
+    2500,
+    3000
+  ],
+  "k": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    1000
+  ],
+  "sketch": "gaussian",
+  "mpi": false,
+  "seed": 0,
+  "#proc": "1",
+  "summary_csv": null,
+  "skip_error": false
+}

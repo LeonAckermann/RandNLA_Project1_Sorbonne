@@ -1,0 +1,18 @@
+{
+  "dataset": "msd",
+  "train": false,
+  "n": 10000,
+  "c": 100.0,
+  "l": [
+    3000
+  ],
+  "k": [
+    1000
+  ],
+  "sketch": "gaussian",
+  "mpi": true,
+  "seed": 0,
+  "#proc": "9",
+  "summary_csv": "results/scaling_N40k_4152303/scaling_summary.csv",
+  "skip_error": true
+}
