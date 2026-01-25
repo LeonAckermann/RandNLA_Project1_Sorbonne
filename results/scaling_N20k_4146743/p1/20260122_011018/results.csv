@@ -1,2 +1,0 @@
-n,c,l,k,dataset,sketch_method,compute_time,parallel_time,rel_error,memory_gb,t_sketch,t_C_matmul,t_C_reduce,t_B_matmul,t_B_allreduce,t_C_gather,t_factorization,t_parallel_kernel
-20000,100000.0,2000,500,msd,gaussian,57.412606007,37.459365432000006,,2.9802322387695312,1.246981271,33.950095797,0.09937801699999937,3.4003039330000036,0.009587684999999624,0.0981036909999986,18.473983712,37.459365432000006
